@@ -32,12 +32,8 @@ PERSONS = (
         ("taro", "Taro", "", 20,(1,1), "male", "会社員"),
         )
 
-AREAS = (
-        # Tag / 名前 / x,y / 備考
-        )
-
 STAGES = (
-        # Tag / 名前 / Area / 紹介
+        # Tag / 名前 / parent / geometry / 紹介
         )
 
 DAYS = (
