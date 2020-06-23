@@ -28,36 +28,40 @@
 
 
 PERSONS = (
-        # Tag / 氏,名 / 歳 / 誕生日 / 性別 / 職業 / 呼称 / 紹介
-        ("taro", "Taro", "", 20,(1,1), "male", "会社員"),
+        # (tag / name / full / age (birth) / sex / job / call / info)
+        ("kiri", "霧宮", "", 17,(1,1), "male", "高校生", 'me:ボク'),
+        ('natsu', '夏美', '', 17,(1,1), 'female', '高校生', 'me:わたし'),
+        ('yuji', '優二', '', 17,(1,1), 'male', '高校生', 'me:俺'),
+        ('tobe', '砥部', '', 36,(1,1), 'male', '高校教師', 'me:おれ'),
+        ('siki', '式美', '', 20,(1,1), 'female', '大学生', 'me:私'),
+        ('hatake', '畠田', '', 65,(1,1), 'female', '清掃員', 'me:私'),
         )
 
 STAGES = (
-        # Tag / 名前 / parent / geometry / 紹介
+        # (tag / name / parent / (geometry) / info)
+        ('HighSchool', '県立高校', 'Tokyo'),
+        ('bu-room', '文芸部部室', 'HighSchool', (100,100)),
         )
 
 DAYS = (
-        # Tag / 名前 / 月 / 日 / 年
-        ("current", "現在", 1,1,2020),
+        # (tag / name / month / day / year)
+        ('notice1', '幽霊ノートに気づいた', 6,10, 2020),
         )
 
 TIMES = (
-        # Tag / 名前 / 時 / 分
+        # (tag / name / hour / minute)
         )
 
 ITEMS = (
-        # Tag / 名前 / 紹介
+        # (tag / name / cate / info)
+        ('bunnote', '文芸部ノート'),
         )
 
 WORDS = (
-        # Tag / 名前 / 紹介
+        # (tag / name / cate / info)
         )
 
 RUBIS = (
-        # Base / Rubi / Exclusion / Type
-        )
-
-LAYERS = (
-        # Key / Title / Words
+        # (origin / rubi / exclusions / always)
         )
 
