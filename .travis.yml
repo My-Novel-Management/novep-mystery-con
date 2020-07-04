@@ -21,7 +21,7 @@ install:
 
 script:
     - coverage run --parallel-mode --rcfile=.coveragerc setup.py test
-    - coverage run --parallel-mode --rcfile=.coveragerc src/main.py --forcemecab
+    - coverage run --parallel-mode --rcfile=.coveragerc src/main.py --forcemecab --text --plot --data --rubi
 
 after_success:
     - coverage combine
