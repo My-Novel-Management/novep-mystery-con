@@ -32,6 +32,8 @@ ASSET = {
         ),
         "WORDS": (
         # (tag / name / cate / info)
+        ("OB", "ＯＢ"),
+        ("OG", "ＯＧ"),
         ),
         "RUBIS": (
         # (origin / rubi / exclusions / always)

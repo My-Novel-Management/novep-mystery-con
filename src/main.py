@@ -9,15 +9,42 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.append('storybuilder')
 from storybuilder.builder.world import World
 from storybuilder.assets import basic
+from storybuilder.assets import common_rubi
 from config import ASSET
 # import scenes
-# from sceones import xxx
+from scenes import Clubroom
+
+
+################################################################
+#
+#   1. Initialize
+#   2. Story memo
+#   3. Story structure - 1/8    :2k
+#   4. Spec
+#   5. Plot - 1/4               :4k
+#   6. Scenes
+#   7. Conte - 1/2              :8k
+#   8. Layout
+#   9. Draft - 1/1              :15k
+#
+################################################################
 
 
 # Constant
 TITLE = "ゴーストライター"
-OUTLINE = "高校の文芸部がやっていたリレー小説に、誰も書いた覚えのない続きが書かれていた"
-MAJOR, MINOR, MICRO = 0, 3, 0
+MAJOR, MINOR, MICRO = 0, 3, 1
+COPY = "幽霊が小説を書いた、なんて不可思議は存在しない"
+ONELINE = "文芸部のリレー小説に誰も書いた覚えのない続きが書かれていた"
+OUTLINE = "青春ミステリ短編。高校の文芸部でやっていたリレー小説に、誰も書いた覚えのない部分があった。部員の一人は幽霊が書いたと言い出すが"
+THEME = "不可思議というのはそういう風に観測しているだけで事実は実につまらないものだ"
+GENRE = "ミステリ／学園"
+TARGET = "10-30台（男女）"
+SIZE = "〜20K"
+CONTEST_INFO = "ノベルアッププラス・ミステリー短編コンテスト「日常の謎」"
+CAUTION = ""
+NOTE = ""
+SITES = ["エブリスタ", "小説家になろう", "ノベルアッププラス", "カクヨム"]
+RELEASED = (7, 12, 2020)
 
 
 # Episodes
@@ -25,45 +52,42 @@ MAJOR, MINOR, MICRO = 0, 3, 0
 # episodes
 def ep_mystery(w: World):
     return w.episode('事件発生',
-            "幽霊のような非科学的なものを信じるのは馬鹿のすることだ等と",
-            "ほぼ部室だけで展開するようにする",
-            w.plot_note("その部室（か校舎）には幽霊部員がいるという噂があった"),
-            w.plot_note("$kiriが部室で一人小説を読んでいたところに、やってきた$natsuが騒ぎ出す", "幽霊がいると"),
-            "友人の$yujiは文芸部だが書くことに興味はない",
-            "$yujiは忘れっぽい",
-            w.plot_note("事情を聞くとどうやら自分の番のはずが、誰かが既に小説の続きを書いていた", "しかも誰も書いた覚えがないらしい"),
-            w.plot_note("世の中に不思議なことはないと言い張る$kiriは何故かその犯人を探すことになる"),
+            w.plot_note("高校の文芸部に所属する$kiriは不思議が大嫌いだ",
+                "誰かが勘違いしているだけで世界には不思議などないと豪語している"),
+            w.plot_note("同級生で同じ部員の$yujiが、今日も文化部が部室で使っている旧校舎に幽霊が出たという噂を持ち込んだ"),
+            w.plot_note("一方、文芸部では部活動としてリレー小説を行っていた",
+                "その締切を守れなかった$yujiは黙ったままノートを置いておく"),
+            w.plot_note("同じ部員で不可思議大好きな$natsuがやってきて$yujiが小説を書いていないだろうと勝手に決めつける"),
+            w.plot_note("$natsuはノートを確認し、リレー小説に謎の続きを発見する"),
+            w.plot_note("それが幽霊の仕業だと騒ぎ出した"),
             outline="部員の一人がノートのリレー小説に誰も書いた覚えのない部分を発見する")
 
 def ep_detective(w: World):
     return w.episode('犯人探し',
-            "本当に幽霊がいるんじゃないか、とミスリードする内容を挿入",
-            w.plot_note("リレー小説に参加している$natsuや$yujiたちからアリバイ及び証言を取る"),
-            w.plot_note("話を聞いたところでは、誰もその小説を書いた者はいなかった"),
-            w.plot_note("一週間後、再び幽霊文芸部員が出現した"),
-            "ここで$yujiの姉の存在、顧問の存在を出しておく",
-            "部室は鍵がかけられ、鍵は顧問の$tobeが管理している",
+            w.plot_note("$kiriは幽霊の仕業ではないことを説明する"),
+            w.plot_note("外部犯によるものだと論破し、$kiriはそれで終わらせようとしたが、",
+                "$natsuはどうしても引き下がらず、犯人が幽霊だと証明すると言い出す"),
+            w.plot_note("$natsuは幽霊が書いた証明がしたくて、監視カメラをつける"),
             outline="部室を閉め切り、誰が書いたのか犯人探しをする")
 
 def ep_truningpoint(w: World):
     return w.episode('転換点',
-            w.plot_note("結局監視カメラを設置してでも犯人を探したいと、$natsuが自腹でカメラを設置した"),
-            w.plot_note("監視カメラに映っていたのは掃除のおばさん（$hatake）だった"),
-            w.plot_note("$hatakeを呼び出して、リレー小説の続きを書いたのか尋ねる"),
-            w.plot_note("$hatakeは学校のＯＧで図書部員だった", "小説好きでこっそりノートを読んだりしていたと証言する",
-                "しかし彼女は書いたりしていなかった"),
-            w.plot_note("$hatakeの証言で、顧問の$tobeがノートを持って帰っていたと分かる"),
-            "$hatakeの字には特徴があった",
+            w.plot_note("監視カメラに映っていたのは掃除のおばちゃんだった"),
+            w.plot_note("清掃員の$hatakeを呼び出して、連載小説の続きを書いたのか尋ねる"),
+            w.plot_note("彼女は学校の$OGで元文芸部員だったが興味本位でノートを覗いたことはあっても、続きを書いたりはしていないと告白する"),
+            w.plot_note("その証拠に$hatakeは左利きでかなり字が傾いた特有の文字だった"),
+            w.plot_note("$hatakeはノートを持ち出したのは顧問の$tobeだと告白する"),
             outline="監視カメラを設置して犯人を探す。そこに浮かび上がったのは意外な人物だった")
 
 def ep_truth(w: World):
     return w.episode('真相暴露',
-            w.plot_note("久々にやってきた顧問の$tobeは幽霊部員の話に「そんなものいる訳ない」と$kiriと同じ答え"),
-            w.plot_note("$tobeは文章の内容からどう考えても書き慣れた人物、しかも大学生以上と推理して、$yujiの姉はどうしてるんだ、と話を振った"),
-            "筆無精で漫画やラノベが読みたいから部活参加している$yujiは、恋心を抱いている$natsuの提案に仕方なくのったが、リレー小説を書く気がなく、姉に適当に代わりに書いといてと言ったことも忘れてしまっていた",
-            w.plot_note("実は$yujiの姉$shikiが、彼が宿題のリレー小説を書かないのをいいことに、勝手に続きを書き加えていた"),
-            w.plot_note("後日、その話を姉にすると、$shikiは$kiriに「ぜひ一度大学のミステリ研究会に遊びにきて」とメッセージをくれた"),
-            w.plot_note("しかし「ミステリは嫌いなんだ」と$kiriは答えたのだった"),
+            w.plot_note("珍しく顔を出した$tobeに$kiriは連載小説を書いたか尋ねる"),
+            w.plot_note("$tobeは幽霊の話を聞いて、一応ノートを保管しておく目的で持ち帰ったと証言する"),
+            w.plot_note("それから、その文字を見て、$yujiの姉の字に似ていると指摘した"),
+            w.plot_note("$yujiは思い出す。自分が小説の続きが全然浮かばなくて姉に考えてくれと食事の時に言ったことを"),
+            w.plot_note("すぐに$yujiはその件を姉に問い合わせる"),
+            w.plot_note("$yujiの姉$shikiは自分がやったと告白し、その連載小説にもヒントが書いてあると教える"),
+            w.plot_note("謎を解いていた$kiriのことを$shikiは気に入り、大学のミステリ研に来るよう要請するが、不思議を作る側は嫌いだと断った"),
             outline="顧問の先生の証言で本当の犯人が彼の姉と分かる")
 
 
@@ -130,10 +154,22 @@ def chara_shiki(w: World):
 
 def main(): # pragma: no cover
     w = World.create_world(f"{TITLE}")
-    w.config.set_outline(f'{OUTLINE}')
     w.config.set_version(MAJOR, MINOR, MICRO)
     w.db.set_from_asset(basic.ASSET)
     w.db.set_from_asset(ASSET)
+    # spec
+    w.config.set_copy(f"{COPY}")
+    w.config.set_oneline(f"{ONELINE}")
+    w.config.set_outline(f"{OUTLINE}")
+    w.config.set_theme(f"{THEME}")
+    w.config.set_genre(f"{GENRE}")
+    w.config.set_target(f"{TARGET}")
+    w.config.set_size(f"{SIZE}")
+    w.config.set_contest_info(f"{CONTEST_INFO}")
+    w.config.set_caution(f"{CAUTION}")
+    w.config.set_note(f"{NOTE}")
+    w.config.set_sites(*SITES)
+    w.config.set_released(*RELEASED)
     return w.run(
             writer_note(w),
             ch_main(w),
