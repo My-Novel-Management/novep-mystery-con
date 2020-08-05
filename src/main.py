@@ -32,7 +32,7 @@ from scenes import Clubroom
 
 # Constant
 TITLE = "ゴーストライター"
-MAJOR, MINOR, MICRO = 0, 6, 0
+MAJOR, MINOR, MICRO = 0, 7, 0
 COPY = "幽霊が小説を書いた、なんて不可思議は存在しない"
 ONELINE = "約二万字の青春ミステリ短編。文芸部のリレー小説に誰も書いた覚えのない続きが書かれていた"
 OUTLINE = "高校の文芸部に所属する$kiriは不可思議なことが嫌いだ。ある日、同じ文芸部員の$natsuが部員でやっていたリレー小説の中に自分たちが書いた覚えのない部分を発見する。それが幽霊の仕業だと言い出すが"
@@ -94,6 +94,7 @@ def ch_main(w: World):
             ep_truningpoint(w),
             w.plot_resolve("犯人は$yujiの姉だった", "噂に聞いた$kiriを試す目的で仕込んだが初日には気づかれず、幽霊が書いたと錯覚した"),
             ep_truth(w),
+            w.symbol("（了）"),
             )
 
 # Note
